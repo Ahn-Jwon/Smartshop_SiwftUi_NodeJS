@@ -10,6 +10,7 @@ import SwiftUI
 struct RigistarationsScreen: View {
     
     @Environment(\.authenticationController) private var authenticationController //환경을 사용하여 인증컨트롤러 연결
+    @Environment(\.dismiss) private var dismiss
     
     @State private var username: String = ""
     @State private var password: String = ""
@@ -25,7 +26,7 @@ struct RigistarationsScreen: View {
             let response = try await authenticationController.register(username: username, password: password)
             
             if response.success {
-                // dismiss the sheet
+                dismiss()
             } else {
                 message = response.message ?? ""
             }
