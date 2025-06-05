@@ -23,3 +23,10 @@ struct AuthenticationController {
         return response
     }
 }
+
+// MARK: 개발 목적으로 제공한 것
+extension AuthenticationController {
+    static var develpoment: AuthenticationController {
+        AuthenticationController(httpClient: HTTPClient())
+    }
+}

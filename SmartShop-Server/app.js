@@ -2,11 +2,13 @@ const express = require("express")
 const models = require('./models')
 const { Op } = require('sequelize') //ID 중복 확인
 const bcrypt = require('bcryptjs') // Password 해시 암호화
+const cors = require('cors')
 const { body, validationResult } = require('express-validator')
 const { errorMonitor } = require("pg/lib/query.js")
 const app = express()
 
-
+// CORS
+app.use(cors())
 // JSON parser
 app.use(express.json())
 
@@ -16,7 +18,7 @@ const registerValodator = [
     body('password', 'password cannot be empty!').not().isEmpty()
 ]
 
-app.post('/register', registerValodator, async (req, res) => {
+app.post('/api/auth/register', registerValodator, async (req, res) => {
     // ID 패스워드 회원가입 검증 현재는 Id와 비밀번호가 비어있으면 안되는 로직
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
