@@ -28,7 +28,7 @@ struct RigistarationsScreen: View {
             if response.success {
                 dismiss()
             } else {
-                message = response.message ?? ""
+                message = response.message ?? ""	
             }
         } catch {
             message = error.localizedDescription
