@@ -10,7 +10,12 @@ const registerValodator = [
     body('password', 'password cannot be empty!').not().isEmpty()
 ]
 
+const loginValodator = [
+    body('username', 'userame cannot be empty!').not().isEmpty(),
+    body('password', 'password cannot be empty!').not().isEmpty()
+]
 
 router.post('/register', registerValodator, authController.register)
+router.post('/login', loginValodator, authController.login)
 
 module.exports = router
