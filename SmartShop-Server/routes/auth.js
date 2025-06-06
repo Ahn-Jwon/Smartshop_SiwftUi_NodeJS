@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { body } = require('express-validator')
+const authController = require('../controllers/authController')
 
 // ゆうこうせいけんさき検査機
 // 미들웨어
